@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Syarat dan Ketentuan Layanan | Dopal Hosting</title>
+  <link rel="stylesheet" href="Style/style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+  <div class="app-container">
+
+    <!-- Global Background Effects -->
+    <div class="bg-gradient"></div>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+      <div class="container nav-container"> 
+        <a href="index.html" class="logo">
+          <div class="logo-icon">
+            <i data-lucide="server"></i>
+          </div>
+          <span class="logo-text">Dopal<span class="text-gradient">Hosting</span></span>
+        </a>
+
+        <div class="desktop-nav">
+          <div class="desktop-nav">
+            <a href="index.html#hosting">Hosting</a>
+            <a href="index.html#services">Layanan</a>
+            <a href="index.html#pricing">Harga</a>
+            <a href="index.html#contact">Kontak</a>
+          </div>
+        </div>
+
+        <div class="desktop-cta">
+          <button id="theme-toggle" class="btn btn-secondary"
+            style="padding: 10px; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; margin-right: 12px;"><i
+              data-lucide="sun"></i></button>
+          <a href="index.html#contact" class="btn btn-primary">Contact Person</a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div class="mobile-nav" id="mobile-nav">
+          <a href="index.html#hosting" class="mobile-link">Hosting</a>
+          <a href="index.html#services" class="mobile-link">Layanan</a>
+          <a href="index.html#pricing" class="mobile-link">Harga</a>
+          <a href="index.html#contact" class="mobile-link">Kontak</a>
+        <div class="mobile-cta">
+          <button id="theme-toggle-mobile" class="btn btn-secondary"
+            style="margin-bottom: 12px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;"><i
+              data-lucide="sun"></i> Tema Terang</button>
+          <a href="index.html#contact" class="btn btn-primary">Contact Person</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content Section -->
+    <section class="features-section" style="padding-top: 150px; padding-bottom: 60px;">
+        <div class="container" style="max-width: 800px;">
+            <div class="section-header" style="text-align: left; margin-bottom: 40px; margin-left: 0;">
+                <h1 class="section-title" style="font-size: 2.5rem; margin-bottom: 20px;">Syarat & Ketentuan <span class="text-gradient">Layanan</span></h1>
+                <p class="section-subtitle" style="font-size: 1.1rem;">Sebelum menggunakan Dopal Hosting, harap menyetujui perjanjian berikut.</p>
+            </div>
+
+            <div class="glass-panel" style="padding: 40px; border-radius: 20px; color: var(--text-secondary); line-height: 1.8;">
+                <h3 style="color: var(--text-primary); margin-bottom: 15px; font-size: 1.3rem;">1. Penggunaan yang Diperbolehkan</h3>
+                <p style="margin-bottom: 25px;">Layanan kami dirancang terutama untuk developer, project tugas kuliah mahasiswa, dan profil bisnis standar. Server harus dipergunakan sesuai kaidah hukum yang berlaku di wilayah hukum server beroperasi (dan Republik Indonesia).</p>
+
+                <h3 style="color: var(--text-primary); margin-bottom: 15px; font-size: 1.3rem;">2. Konten Terlarang (Zero-Tolerance)</h3>
+                <p style="margin-bottom: 15px;">Akun akan ditangguhkan seketika tanpa pengembalian dana apabila pelanggan ditemukan menghosting situs web dengan kategori berikut:</p>
+                <ul style="margin-bottom: 25px; margin-left: 20px;">
+                    <li>Materi Perjudian, Pornografi, eksploitasi, dan pelanggaran SARA.</li>
+                    <li>Situs Phising (Penipuan kredensial) atau Distribusi Malware.</li>
+                    <li>Pelanggaran Hak Cipta (Nulled Software, Movie Streaming Bajakan, MP3 Ilegal).</li>
+                    <li>Website pengalihan traffic yang membebani kinerja tinggi secara kontinyu.</li>
+                </ul>
+                
+                <h3 style="color: var(--text-primary); margin-bottom: 15px; font-size: 1.3rem;">3. Kewajiban & Keamanan Backup</h3>
+                <p style="margin-bottom: 25px;">Pelanggan secara eksklusif bertanggungjawab penuh terhadap pencadangan (backup) data personal mereka secara berkala di luar server Dopal Hosting. Kendati kami mungkin melakukan backup mingguan pada sistem root, prosedur tersebut bukan sebuah jaminan dan Dopal tidak bertanggungjawab jika terjadi kerugian insidental berupa kehilangan/korupsi berkas.</p>
+                
+                <h3 style="color: var(--text-primary); margin-bottom: 15px; font-size: 1.3rem;">4. Aturan Permintaan Instalasi Khusus (Bantuan Deploy)</h3>
+                <p style="margin-bottom: 25px;">Fitur penawaran bantuan setup gratis (Deploy Laravel & PHP) terbatas pada instalasi awal dan pengecekan koneksi database. Tim Dopal Hosting tidak wajib menulis, memodifikasi alur logic/sintaks kode (<i>recode</i>), atau memecahkan bug pada script/aplikasi rakitan buatan pelanggan sendiri di luar isu dasar web hosting.</p>
+                
+                <h3 style="color: var(--text-primary); margin-bottom: 15px; font-size: 1.3rem;">5. Siklus Pembayaran</h3>
+                <p style="margin-bottom: 25px;">Invoice layanan berbasis sewa berlangganan (Contoh: Kuota Per Bulan). Fasilitas web hosting dapat mati seketika pada hari di mana jatuh tempo masa aktif berakhir tanpa pembayaran yang dikirim klien (atau dibatalkan sepihak). Bukti pembayaran wajib dirujuk ke Admin CS via WhatsApp.</p>
+                
+                <h3 style="color: var(--text-primary); margin-bottom: 15px; font-size: 1.3rem;">6. Revisi Ketentuan</h3>
+                <p>Dopal Hosting berhak menambah, menghapus, atau memodifikasi setiap ketentuan di halaman syarat dan ketetapan ini sewaktu-waktu tanpa keharusan mengirim peringatan pemberitahuan sebelumnya, penggunaan lanjutan menandakan kesepakatan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <i data-lucide="server"></i>
+              <span class="footer-logo-text">Dopal<span class="text-gradient">Hosting</span></span>
+            </div>
+            <p class="footer-desc">
+              Membantu mahasiswa dan developer untuk deploy website dengan mudah.
+              Mulai dari upload website, setup domain, hingga konfigurasi database.
+            </p>
+            <div class="social-links">
+              <a href="#"><i data-lucide="twitter"></i></a>
+              <a href="#"><i data-lucide="github"></i></a>
+              <a href="#"><i data-lucide="linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Layanan</h4>
+            <ul>
+              <li><a href="index.html#services">Upload Website HTML</a></li>
+              <li><a href="index.html#services">Deploy Website PHP</a></li>
+              <li><a href="index.html#services">Setup Database</a></li>
+              <li><a href="index.html#services">Deploy Laravel</a></li>
+              <li><a href="index.html#services">Bantuan Setup Domain</a></li>
+              <li><a href="index.html#services">Paket Hosting Mahasiswa</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Perusahaan</h4>
+            <ul>
+              <li><a href="tentangkami.html">Tentang Kami</a></li>
+              <li><a href="index.html#contact">Kontak</a></li>
+            </ul>
+          </div>
+
+          <!-- <div class="footer-col">
+            ...
+          </div> -->
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Dopal Hosting Inc. Hak Cipta Dilindungi Undang-Undang.</p>
+          <div class="footer-bottom-links">
+            <a href="kebijakan-privasi.html">Kebijakan Privasi</a>
+            <a href="syarat-ketentuan.html">Syarat dan Ketentuan Layanan</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="Js/script.js"></script>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/6285607598817" target="_blank" class="floating-wa" title="Hubungi kami via WhatsApp">
+    <img src="wasap.png" alt="WhatsApp">
+  </a>
+</body>
+
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="logo.png">
+
+<title>Order Hosting | Dopal Hosting</title>
+
+<link rel="stylesheet" href="Style/style.css">
+<link rel="stylesheet" href="Style/styleorder.css">
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+      <div class="container nav-container">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">
+            <i data-lucide="server"></i>
+          </div>
+          <span class="logo-text">Dopal<span class="text-gradient">Hosting</span></span>
+        </a>
+
+        <div class="desktop-nav">
+          <a href="index.html#hosting">Hosting</a>
+          <a href="index.html#domains">Domain</a>
+          <a href="index.html#features">Fitur</a>
+          <a href="index.html#pricing">Harga</a>
+        </div>
+
+        <div class="desktop-cta">
+          <button id="theme-toggle" class="btn btn-secondary"
+            style="padding: 10px; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; margin-right: 12px;"><i
+              data-lucide="sun"></i></button>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div class="mobile-nav" id="mobile-nav">
+        <a href="index.html#hosting" class="mobile-link">Hosting</a>
+        <a href="index.html#domains" class="mobile-link">Domain</a>
+        <a href="index.html#features" class="mobile-link">Fitur</a>
+        <a href="index.html#pricing" class="mobile-link">Harga</a>
+        <div class="mobile-cta">
+          <button id="theme-toggle-mobile" class="btn btn-secondary"
+            style="margin-bottom: 12px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;"><i
+              data-lucide="sun"></i> Tema Terang</button>
+        </div>
+      </div>
+    </nav>
+
+<div class="app-container">
+
+<section class="order-section">
+
+<div class="container">
+
+<div class="glass-panel order-card">
+
+<h2 class="section-title">
+Form <span class="text-gradient">Order </span>
+</h2>
+
+<p class="section-subtitle">
+Silakan isi data berikut untuk melakukan pemesanan hosting.
+</p>
+
+<form class="order-form" action="order.php" method="POST">
+
+<div class="form-group">
+<label>Nama Lengkap</label>
+<input type="text" name="nama" placeholder="Nama Anda" required>
+</div>
+
+<div class="form-group">
+<label>Email</label>
+<input type="email" name="email" placeholder="email@email.com" required>
+</div>
+
+<div class="form-group">
+<label>Jenis Layanan</label>
+
+<select name="layanan" id="layananSelect">
+
+<option value="">Pilih layanan</option>
+<option value="hosting">Bantuan Hosting Website</option>
+<option value="domain">Bantuan Domain</option>
+<option value="paket">Paket Mahasiswa</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Pilih Layanan</label>
+
+<select name="paket" id="paketSelect">
+
+<option value="">Pilih layanan terlebih dahulu</option>
+
+</select>
+</div>
+
+<div class="form-group">
+<label>Catatan tambahan</label>
+<textarea name="catatan" placeholder="Jika ada request khusus..."></textarea>
+</div>
+
+<div class="form-group checkbox-group" style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 25px;">
+<input type="checkbox" id="terms-agree" name="terms_agree" required style="margin-top: 5px; cursor: pointer; width: auto;">
+<label for="terms-agree" style="font-size: 0.9rem; font-weight: normal; cursor: pointer;">Saya telah membaca dan menyetujui <a href="kebijakan-privasi.html" style="color: var(--accent-primary); text-decoration: none;">Kebijakan Privasi</a> serta <a href="syarat-ketentuan.html" style="color: var(--accent-primary); text-decoration: none;">Syarat & Ketentuan Layanan</a> Dopal Hosting.</label>
+</div>
+
+<button type="submit" class="btn btn-primary order-btn">
+Kirim Pesanan
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+<!-- Footer -->
+       <footer>
+      <div class="container">
+        <div class="footer-grid">
+
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <i data-lucide="server"></i>
+              <span class="footer-logo-text">Dopal<span class="text-gradient">Hosting</span></span>
+            </div>
+            <p class="footer-desc">
+              Membantu mahasiswa dan developer untuk deploy website dengan mudah.
+              Mulai dari upload website, setup domain, hingga konfigurasi database.
+            </p>
+            <div class="social-links">
+              <a href="#"><i data-lucide="twitter"></i></a>
+              <a href="#"><i data-lucide="github"></i></a>
+              <a href="#"><i data-lucide="linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Layanan</h4>
+            <ul>
+              <li><a href="#">Upload Website HTML</a></li>
+              <li><a href="#">Deploy Website PHP</a></li>
+              <li><a href="#">Setup Database</a></li>
+              <li><a href="#">Deploy Laravel</a></li>
+              <li><a href="#">Bantuan Setup Domain</a></li>
+              <li><a href="#">Paket Hosting Mahasiswa</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Perusahaan</h4>
+            <ul>
+              <li><a href="tentangkami.html">Tentang Kami</a></li>
+              <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+          </div>
+
+          <!-- <div class="footer-col">
+            <h4>Dukungan</h4>
+            <ul>
+              <li><a href="#">Pusat Bantuan</a></li>
+              <li><a href="#">Tutorial</a></li>
+              <li><a href="#">Status Sistem</a></li>
+              <li><a href="#">Laporan Pelanggaran</a></li>
+              <li><a href="#">Hubungi Tim Teknis</a></li>
+            </ul>
+          </div> -->
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Dopal Hosting Inc. Hak Cipta Dilindungi Undang-Undang.</p>
+          <div class="footer-bottom-links">
+            <a href="kebijakan-privasi.html">Kebijakan Privasi</a>
+            <a href="syarat-ketentuan.html">Syarat dan Ketentuan Layanan</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+<script src="Js/script.js"></script>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/6285607598817" target="_blank" class="floating-wa" title="Hubungi kami via WhatsApp">
+    <img src="wasap.png" alt="WhatsApp">
+  </a>
+</body>
+
+</html>

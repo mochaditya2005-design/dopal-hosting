@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 Halaman Tidak Ditemukan | Dopal Hosting</title>
+  <link rel="stylesheet" href="Style/style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+  <div class="app-container">
+
+    <!-- Global Background Effects -->
+    <div class="bg-gradient"></div>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+      <div class="container nav-container"> 
+        <a href="index.html" class="logo">
+          <div class="logo-icon">
+            <i data-lucide="server"></i>
+          </div>
+          <span class="logo-text">Dopal<span class="text-gradient">Hosting</span></span>
+        </a>
+
+        <div class="desktop-nav">
+          <div class="desktop-nav">
+            <a href="index.html#hosting">Hosting</a>
+            <a href="index.html#services">Layanan</a>
+            <a href="index.html#pricing">Harga</a>
+            <a href="index.html#contact">Kontak</a>
+          </div>
+        </div>
+
+        <div class="desktop-cta">
+          <button id="theme-toggle" class="btn btn-secondary"
+            style="padding: 10px; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; margin-right: 12px;"><i
+              data-lucide="sun"></i></button>
+          <a href="index.html#contact" class="nav-wa-icon" title="Hubungi kami via WhatsApp" style="display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; overflow: hidden; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); transition: transform 0.3s ease;">
+            <img src="wasap.png" alt="WhatsApp" style="width: 100%; height: 100%; object-fit: contain;">
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div class="mobile-nav" id="mobile-nav">
+          <a href="index.html#hosting" class="mobile-link">Hosting</a>
+          <a href="index.html#services" class="mobile-link">Layanan</a>
+          <a href="index.html#pricing" class="mobile-link">Harga</a>
+          <a href="index.html#contact" class="mobile-link">Kontak</a>
+        <div class="mobile-cta">
+          <button id="theme-toggle-mobile" class="btn btn-secondary"
+            style="margin-bottom: 12px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;"><i
+              data-lucide="sun"></i> Tema Terang</button>
+          <a href="index.html#contact" class="nav-wa-icon" title="Hubungi kami via WhatsApp" style="display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; overflow: hidden; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); transition: transform 0.3s ease; margin: 0 auto;">
+            <img src="wasap.png" alt="WhatsApp" style="width: 100%; height: 100%; object-fit: contain;">
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 404 Section -->
+    <section class="hero-section" style="min-height: 80vh; display: flex; align-items: center;">
+      <div class="container" style="text-align: center;">
+
+        <div class="hero-content" style="max-width: 600px; margin: 0 auto;">
+            <!-- Icon -->
+            <div style="display: flex; justify-content: center; margin-bottom: 30px; color: var(--accent-primary);">
+                <i data-lucide="ghost" style="width: 120px; height: 120px; opacity: 0.8; animation: float 3s ease-in-out infinite;"></i>
+            </div>
+
+            <!-- Texts -->
+            <h1 class="hero-title" style="font-size: clamp(4rem, 8vw, 6rem); margin-bottom: 10px;">404</h1>
+            <h2 style="font-size: 2rem; margin-bottom: 20px;">Oops! <span class="text-gradient">Servernya Kaget...</span></h2>
+            
+            <p class="hero-subtitle" style="margin-bottom: 40px;">
+                Sepertinya halaman yang Anda cari tidak ada atau mungkin sudah pindah ke tempat lain di luar angkasa server. Jangan khawatir, mari kita kembali ke markas utama!
+            </p>
+            
+            <!-- Buttons -->
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="index.html" class="btn btn-primary" style="padding: 15px 30px; font-size: 1.1rem; border-radius: 30px;">
+                    <i data-lucide="home" style="margin-right: 10px; width: 20px; height: 20px;"></i>
+                    Kembali ke Beranda
+                </a>
+                <a href="kontak.html" class="btn btn-secondary" style="padding: 15px 30px; font-size: 1.1rem; border-radius: 30px;">
+                    <i data-lucide="life-buoy" style="margin-right: 10px; width: 20px; height: 20px;"></i>
+                    Hubungi Bantuan
+                </a>
+            </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Basic Footer 404 -->
+    <footer style="padding: 40px 0; margin-top: 0; background: transparent; border-top: none;">
+      <div class="container">
+        <div class="footer-bottom" style="justify-content: center; text-align: center; border-top: 1px solid var(--glass-border);">
+          <p style="margin-bottom: 15px;">© 2026 Dopal Hosting Inc. Hak Cipta Dilindungi Undang-Undang.</p>
+          <div class="footer-bottom-links" style="justify-content: center;">
+            <a href="kebijakan-privasi.html">Kebijakan Privasi</a>
+            <a href="syarat-ketentuan.html">Syarat dan Ketentuan Layanan</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="Js/script.js"></script>
+
+  <!-- Add slight animation for the ghost icon -->
+  <style>
+      @keyframes float {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-15px); }
+          100% { transform: translateY(0px); }
+      }
+  </style>
+</body>
+
+</html>
