@@ -1,534 +1,273 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" href="favicon.ico">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dopal Hosting | Web Hosting Premium</title>
-  <link rel="stylesheet" href="Style/style.css">
-  <!-- Lucide Icons Library -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-
-<body>
-  <div class="app-container">
-
-    <!-- Global Background Effects -->
-    <div class="bg-gradient"></div>
-
-    <!-- Navbar -->
-    <nav id="navbar">
-      <div class="container nav-container">
-        <a href="#" class="logo">
-          <div class="logo-icon">
-            <i data-lucide="server"></i>
-          </div>
-          <span class="logo-text">Dopal<span class="text-gradient">Hosting</span></span>
-        </a>
-
-        <div class="desktop-nav">
-          <div class="desktop-nav">
-            <a href="#hosting">Hosting</a>
-            <a href="#services">Layanan</a>
-            <a href="#pricing">Harga</a>
-            <a href="#contact">Kontak</a>
-          </div>
-        </div>
-
-        <div class="desktop-cta">
-          <button id="theme-toggle" class="btn btn-secondary"
-            style="padding: 10px; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; margin-right: 12px;"><i
-              data-lucide="sun"></i></button>
-        </div>
-
-        <!-- Mobile Menu Toggle -->
-        <button class="mobile-menu-btn" id="mobile-menu-btn">
-          <i data-lucide="menu"></i>
-        </button>
-      </div>
-
-      <!-- Mobile Navigation -->
-      <div class="mobile-nav" id="mobile-nav">
-
-        <a href="#hosting" class="mobile-link">Hosting</a>
-        <a href="#services" class="mobile-link">Layanan</a>
-        <a href="#pricing" class="mobile-link">Harga</a>
-        <a href="#contact" class="mobile-link">Kontak</a>
-        <div class="mobile-cta">
-          <button id="theme-toggle-mobile" class="btn btn-secondary"
-            style="margin-bottom: 12px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;"><i
-              data-lucide="sun"></i> Tema Terang</button>
-        </div>
-      </div>
-    </nav>
-
-    <main>
-
-      <!-- Hero Section -->
-      <section id="hosting" class="hero-section">
-        <div class="bg-glow"></div>
-        <div class="bg-glow-right"></div>
-
-        <div class="container hero-content">
-          <!-- Badge
-          <div class="hero-badge">
-            <span class="hero-badge-dot"></span>
-            Teknologi NVMe SSD Generasi Terbaru
-          </div> -->
-
-          <!-- Headline -->
-          <h1 class="hero-title">
-            Deploy Website Anda <br />
-            Lebih Cepat & Mudah <span class="text-gradient-accent"></span>
-          </h1>
-
-          <!-- Sub-headline -->
-          <p class="hero-subtitle">
-            Upload website, setup database, dan deploy Laravel
-            dengan harga terjangkau.
-          </p>
-
-          <!-- Domain Search Box -->
-          <div class="domain-container">
-
-            <div class="search-box">
-
-              <div class="icon">🔍</div>
-
-              <input type="text" placeholder="Temukan nama domain sempurna Anda" id="domainInput">
-
-              <select id="extension">
-                <option>.com</option>
-                <option>.id</option>
-                <option>.net</option>
-                <option>.org</option>
-              </select>
+function cekDomain() {
+    const domain = document.getElementById("domainInput").value.trim().toLowerCase();
+    const ext = document.getElementById("extension").value;
+    const fullDomain = domain + ext;
+    const result = document.getElementById("result");
+
+    // Validate domain input
+    if (domain === "") {
+        result.innerHTML = "⚠️ Masukkan nama domain terlebih dahulu";
+        result.style.color = "#fbbf24";
+        return;
+    }
+
+    // Check for invalid characters
+    const validPattern = /^[a-z0-9-]{1,}$/;
+    if (!validPattern.test(domain)) {
+        result.innerHTML = "⚠️ Domain hanya boleh berisi huruf, angka, dan tanda hubung";
+        result.style.color = "#fbbf24";
+        return;
+    }
+
+    // Check if domain starts or ends with hyphen
+    if (domain.startsWith("-") || domain.endsWith("-")) {
+        result.innerHTML = "⚠️ Domain tidak boleh dimulai atau diakhiri dengan tanda hubung";
+        result.style.color = "#fbbf24";
+        return;
+    }
+
+    const takenDomains = ["google.com", "facebook.com", "github.com", "Dopal.com"];
+
+    if (takenDomains.includes(fullDomain)) {
+        result.innerHTML = "❌ Domain sudah digunakan";
+        result.style.color = "#ef4444";
+    } else {
+        result.innerHTML = "✅ Domain tersedia: <strong>" + fullDomain + "</strong>";
+        result.style.color = "#10b981";
+    }
+}
+
+ // Initialize Lucide Icons
+if (window.lucide) {
+    lucide.createIcons();
+} else {
+    console.warn("Lucide icons library not loaded");
+}
+
+// Navbar Scroll Effect
+window.addEventListener('scroll', function () {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// Mobile Menu Toggle
+const mobileBtn = document.getElementById('mobile-menu-btn');
+const mobileNav = document.getElementById('mobile-nav');
+const mobileLinks = document.querySelectorAll('.mobile-link');
+
+if (mobileBtn && mobileNav) {
+    mobileBtn.addEventListener('click', () => {
+        mobileNav.classList.toggle('active');
+        const isActive = mobileNav.classList.contains('active');
+        // Change icon based on state
+        if (isActive) {
+            mobileBtn.innerHTML = '<i data-lucide="x"></i>';
+        } else {
+            mobileBtn.innerHTML = '<i data-lucide="menu"></i>';
+        }
+        if (window.lucide) {
+            lucide.createIcons(); // Re-initialize icons
+        }
+    });
 
-              <button onclick="cekDomain()">Cari ➜</button>
+    // Close mobile menu when a link is clicked
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            mobileBtn.innerHTML = '<i data-lucide="menu"></i>';
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
+    });
+}
 
-            </div>
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && document.querySelector(href)) {
+            e.preventDefault();
+            document.querySelector(href).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    });
+});
 
-            <p id="result"></p>
+const buttons = document.querySelectorAll(".select-plan");
+const cards = document.querySelectorAll(".pricing-card");
 
-          </div>
+buttons.forEach((btn) => {
 
-          <!-- Domain Pricing Columns -->
-          <div class="domain-pricing-columns">
-            <div class="domain-column-item">
-              <div class="domain-column-name">.com</div>
-              <div class="domain-column-price">Rp149.000/thn</div>
-              <div class="domain-column-message">Domain populer untuk bisnis global.</div>
-            </div>
+  btn.addEventListener("click", function(){
 
-            <div class="domain-column-item">
-              <div class="domain-column-name">.id</div>
-              <div class="domain-column-price">Rp199.000/thn</div>
-              <div class="domain-column-message">Identitas terpercaya untuk audiens lokal.</div>
-            </div>
+    // hapus active dari semua card
+    cards.forEach(card=>{
+      card.classList.remove("active");
+    });
 
-            <div class="domain-column-item">
-              <div class="domain-column-name">.net</div>
-              <div class="domain-column-price">Rp179.000/thn</div>
-              <div class="domain-column-message">Pilihan tepat untuk jaringan & startup teknologi.</div>
-            </div>
+    // cari card dari tombol yang diklik
+    const card = this.closest(".pricing-card");
 
-            <div class="domain-column-item">
-              <div class="domain-column-name">.org</div>
-              <div class="domain-column-price">Rp169.000/thn</div>
-              <div class="domain-column-message">Ideal untuk komunitas, yayasan, dan organisasi.</div>
-            </div>
-          </div>
-        </div>
-      </section>
+    // aktifkan card tersebut
+    card.classList.add("active");
 
-      <!-- Layanan Section -->
-      <section id="services" class="features-section">
+  });
 
-        <div class="container">
+});
 
-          <div class="section-header">
+const layananSelect = document.getElementById("layananSelect");
+const paketSelect = document.getElementById("paketSelect");
 
-            <h2 class="section-title">
-              Layanan <span class="text-gradient">Dopal Hosting</span>
-            </h2>
+if (layananSelect && paketSelect) {
 
-            <p class="section-subtitle">
-              Berbagai layanan yang kami sediakan untuk membantu website Anda online dengan cepat, mulai dari deploy
-              website hingga setup domain dan hosting.
-            </p>
+layananSelect.addEventListener("change", function(){
 
-          </div>
+let value = this.value;
 
+paketSelect.innerHTML = "";
 
-          <div class="features-grid">
+if(value === "hosting"){
 
-            <!-- Upload HTML -->
-            <div class="feature-card">
+paketSelect.innerHTML = `
 
-              <div class="feature-icon-wrapper">
-                <i data-lucide="upload-cloud"></i>
-              </div>
+<option value="html">Upload Website HTML - 10k</option>
 
-              <h3 class="feature-title">Upload Website HTML</h3>
+<option value="php">Upload Website PHP - 20k</option>
 
-              <p class="feature-desc">
-                Membantu mengupload website HTML ke hosting agar dapat langsung diakses secara online dengan konfigurasi
-                server yang optimal.
-              </p>
+<option value="database">Setup Database - 10k</option>
 
-            </div>
+<option value="laravel">Deploy Laravel - 25k</option>
 
+`;
 
-            <!-- Deploy PHP -->
-            <div class="feature-card">
+}
 
-              <div class="feature-icon-wrapper">
-                <i data-lucide="code"></i>
-              </div>
+else if(value === "domain"){
 
-              <h3 class="feature-title">Deploy Website PHP</h3>
+paketSelect.innerHTML = `
 
-              <p class="feature-desc">
-                Bantuan instalasi dan konfigurasi website berbasis PHP agar dapat berjalan dengan baik di server
-                hosting.
-              </p>
+<option value="myid">Domain .my.id - 10k</option>
 
-            </div>
+<option value="site">Domain .site - 20k</option>
 
+<option value="online">Domain .online - 15k</option>
 
-            <!-- Setup Database -->
-            <div class="feature-card">
+`;
 
-              <div class="feature-icon-wrapper">
-                <i data-lucide="database"></i>
-              </div>
+}
 
-              <h3 class="feature-title">Setup Database</h3>
+else if(value === "paket"){
 
-              <p class="feature-desc">
-                Konfigurasi database MySQL atau MariaDB untuk mendukung aplikasi web agar dapat berjalan secara optimal.
-              </p>
+paketSelect.innerHTML = `
 
-            </div>
+<option value="basic">Basic - Hosting + Upload</option>
 
+<option value="pro">Pro - Hosting + Domain</option>
 
-            <!-- Deploy Laravel -->
-            <div class="feature-card">
+<option value="premium">Premium - Hosting + Domain + Deploy</option>
 
-              <div class="feature-icon-wrapper">
-                <i data-lucide="layers"></i>
-              </div>
+`;
 
-              <h3 class="feature-title">Deploy Laravel</h3>
+}
 
-              <p class="feature-desc">
-                Instalasi dan konfigurasi framework Laravel ke hosting lengkap dengan pengaturan environment dan
-                database.
-              </p>
+});
 
-            </div>
+}
 
+const params = new URLSearchParams(window.location.search);
 
-            <!-- Bantuan Domain -->
-            <div class="feature-card">
+const paket = params.get("paket");
 
-              <div class="feature-icon-wrapper">
-                <i data-lucide="globe"></i>
-              </div>
+if(paket){
 
-              <h3 class="feature-title">Bantuan Setup Domain</h3>
+if(document.getElementById("paket")) document.getElementById("paket").innerText = paket.toUpperCase();
 
-              <p class="feature-desc">
-                Membantu pembelian dan konfigurasi domain seperti .my.id, .site, dan .online agar website Anda dapat
-                diakses publik.
-              </p>
+if(document.getElementById("paketSelect")) document.getElementById("paketSelect").value = paket;
 
-            </div>
+}
 
+// Theme Toggle Logic
+const themeToggles = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
+const htmlElement = document.documentElement;
 
-            <!-- Paket Mahasiswa -->
-            <div class="feature-card">
+let savedTheme = null;
+try {
+    savedTheme = localStorage.getItem('theme');
+} catch (e) {
+    console.warn("localStorage diblokir, mungkin karena file:/// protocol. Menggunakan tema default (dark).");
+}
 
-              <div class="feature-icon-wrapper">
-                <i data-lucide="graduation-cap"></i>
-              </div>
+if (savedTheme) {
+    htmlElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcons(savedTheme);
+}
 
-              <h3 class="feature-title">Paket Hosting Mahasiswa</h3>
+themeToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const currentTheme = htmlElement.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        htmlElement.setAttribute('data-theme', newTheme);
+        try {
+            localStorage.setItem('theme', newTheme);
+        } catch (e) {}
+        updateThemeIcons(newTheme);
+    });
+});
 
-              <p class="feature-desc">
-                Paket hosting lengkap dengan deploy website dan domain dengan harga terjangkau khusus untuk mahasiswa.
-              </p>
+function updateThemeIcons(theme) {
+    themeToggles.forEach(toggle => {
+        if(theme === 'light') {
+            if(toggle.id === 'theme-toggle-mobile') {
+                toggle.innerHTML = '<i data-lucide="moon"></i> Tema Gelap';
+            } else {
+                toggle.innerHTML = '<i data-lucide="moon"></i>';
+            }
+        } else {
+             if(toggle.id === 'theme-toggle-mobile') {
+                toggle.innerHTML = '<i data-lucide="sun"></i> Tema Terang';
+            } else {
+                toggle.innerHTML = '<i data-lucide="sun"></i>';
+            }
+        }
+    });
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+}
 
-            </div>
 
-          </div>
+document.getElementById("orderForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
 
-        </div>
+  const formData = new FormData(this);
 
-      </section>
+  const data = {
+    nama: formData.get("nama"),
+    email: formData.get("email"),
+    layanan: formData.get("layanan"),
+    paket: formData.get("paket"),
+    catatan: formData.get("catatan")
+  };
 
-      <!-- Pricing Section -->
-      <section id="pricing" class="pricing-section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Harga yang Simpel dan <span class="text-gradient">Transparan</span></h2>
-            <p class="section-subtitle">
-              Solusi hosting terjangkau untuk project kuliah,
-              deploy website, setup database, dan domain.
-            </p>
-          </div>
-
-          <div class="pricing-grid">
-
-            <!-- Starter Plan -->
-            <div class="glass-panel pricing-card">
-              <h3 class="plan-name">Basic</h3>
-              <p class="plan-desc">Website sederhana seperti HTML, CSS, JavaScript, atau landing page tugas kuliah.</p>
-              <div class="plan-price-wrap">
-                <span class="plan-price">Rp25rb</span><span class="plan-period">/bln</span>
-              </div>
-              <a href="order.html?paket=basic" class="btn btn-secondary plan-btn select-plan">Pilih Paket</a>
-              <div class="plan-features">
-                <p class="plan-features-title">Fitur Teratas:</p>
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div><span
-                    class="plan-feature-text"><strong>Hosting 1GB</strong> </span>
-                </div>
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div><span
-                    class="plan-feature-text"><strong>Upload Website</strong></span>
-                </div>
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div><span
-                    class="plan-feature-text"><strong>Setup Database</strong></span>
-                </div>
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div><span
-                    class="plan-feature-text"><strong>1 Website</strong> </span>
-                </div>
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div><span
-                    class="plan-feature-text"><strong>Gratis Bantuan instalasi dasar</strong></span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Professional Plan -->
-            <div class="glass-panel pricing-card popular active">
-              <div class="popular-badge">Paling Populer</div>
-
-              <h3 class="plan-name">Pro</h3>
-              <p class="plan-desc">
-                Cocok untuk: Project kuliah yang menggunakan PHP, MySQL, atau framework sederhana.
-              </p>
-
-              <div class="plan-price-wrap">
-                <span class="plan-price">Rp50rb</span>
-                <span class="plan-period">/bln</span>
-              </div>
-              <a href="order.html?paket=pro" class="btn btn-secondary plan-btn select-plan">Pilih Paket</a>
-              <div class="plan-features">
-                <p class="plan-features-title">Fitur Teratas:</p>
-
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div>
-                  <span class="plan-feature-text"><strong>Hosting 3GB</strong></span>
-                </div>
-
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div>
-                  <span class="plan-feature-text"><strong>Domain gratis (.my.id / .site)</strong></span>
-                </div>
-
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div>
-                  <span class="plan-feature-text"><strong>Upload Website</strong></span>
-                </div>
-
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div>
-                  <span class="plan-feature-text"><strong>Setup Database</strong></span>
-                </div>
-
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div>
-                  <span class="plan-feature-text"><strong>Setup Subdomain</strong></span>
-                </div>
-
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div>
-                  <span class="plan-feature-text"><strong>Bantuan deploy PHP / Laravel</strong></span>
-                </div>
-
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div>
-                  <span class="plan-feature-text"><strong>Support revisi kecil</strong></span>
-                </div>
-
-              </div>
-            </div>
-
-            <!-- Business Plan -->
-            <div class="glass-panel pricing-card">
-              <h3 class="plan-name">Premium</h3>
-              <p class="plan-desc">Cocok untuk:
-                Project yang lebih kompleks seperti Laravel, portfolio online, atau web sistem informasi.
-              </p>
-              <div class="plan-price-wrap">
-                <span class="plan-price">Rp80rb</span><span class="plan-period">/bln</span>
-              </div>
-              <a href="order.html?paket=premium" class="btn btn-secondary plan-btn select-plan">Pilih Paket</a>
-              <div class="plan-features">
-                <p class="plan-features-title">Fitur Teratas:</p>
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div><span
-                    class="plan-feature-text"><strong>Hosting 5GB</strong></span>
-                </div>
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div><span
-                    class="plan-feature-text"><strong>Domain gratis (.com / .site / .online)</strong></span>
-                </div>
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div><span
-                    class="plan-feature-text"><strong>Deploy Website Full</strong></span>
-                </div>
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div><span
-                    class="plan-feature-text"><strong>Setup Database + Import Data</strong></span>
-                </div>
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div><span
-                    class="plan-feature-text"><strong>Setup SSL (HTTPS)</strong></span>
-                </div>
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div><span
-                    class="plan-feature-text"><strong>Optimasi performa website</strong></span>
-                </div>
-                <div class="plan-feature-item">
-                  <div class="plan-feature-icon"><i data-lucide="check"></i></div><span
-                    class="plan-feature-text"><strong>Maintenance 1 bulan</strong></span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-
-
-      <!-- Contact Section -->
-      <section id="contact" class="contact-section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Hubungi <span class="text-gradient">Kami</span></h2>
-            <p class="section-subtitle">
-              Tim dukungan kami siap membantu Anda 24/7. Hubungi kami melalui berbagai saluran komunikasi yang tersedia.
-            </p>
-          </div>
-
-          <div class="contact-grid">
-            <div class="contact-card glass-panel">
-              <div class="contact-icon">
-                <i data-lucide="mail"></i>
-              </div>
-              <h3>Email</h3>
-              <p><a href="mailto:support@Dopal.com">support@Dopal.com</a></p>
-            </div>
-
-            <div class="contact-card glass-panel">
-              <div class="contact-icon">
-                <i data-lucide="phone"></i>
-              </div>
-              <h3>Telepon</h3>
-              <p><a href="https://wa.me/6285607598817">+62 821-2345-6789</a></p>
-            </div>
-
-            <div class="contact-card glass-panel">
-              <div class="contact-icon">
-                <i data-lucide="message-square"></i>
-              </div>
-              <h3>Live Chat</h3>
-              <p>Tersedia di website kami secara real-time</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="footer-grid">
-
-          <div class="footer-brand">
-            <div class="footer-logo">
-              <i data-lucide="server"></i>
-              <span class="footer-logo-text">Dopal<span class="text-gradient">Hosting</span></span>
-            </div>
-            <p class="footer-desc">
-              Membantu mahasiswa dan developer untuk deploy website dengan mudah.
-              Mulai dari upload website, setup domain, hingga konfigurasi database.
-            </p>
-            <div class="social-links">
-              <a href="#"><i data-lucide="twitter"></i></a>
-              <a href="#"><i data-lucide="github"></i></a>
-              <a href="#"><i data-lucide="linkedin"></i></a>
-            </div>
-          </div>
-
-          <div class="footer-col">
-            <h4>Layanan</h4>
-            <ul>
-              <li><a href="#">Upload Website HTML</a></li>
-              <li><a href="#">Deploy Website PHP</a></li>
-              <li><a href="#">Setup Database</a></li>
-              <li><a href="#">Deploy Laravel</a></li>
-              <li><a href="#">Bantuan Setup Domain</a></li>
-              <li><a href="#">Paket Hosting Mahasiswa</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4>Perusahaan</h4>
-            <ul>
-              <li><a href="tentangkami.html">Tentang Kami</a></li>
-              <li><a href="kontak.html">Kontak</a></li>
-            </ul>
-          </div>
-
-          <!-- <div class="footer-col">
-            <h4>Dukungan</h4>
-            <ul>
-              <li><a href="#">Pusat Bantuan</a></li>
-              <li><a href="#">Tutorial</a></li>
-              <li><a href="#">Status Sistem</a></li>
-              <li><a href="#">Laporan Pelanggaran</a></li>
-              <li><a href="#">Hubungi Tim Teknis</a></li>
-            </ul>
-          </div> -->
-        </div>
-
-        <div class="footer-bottom">
-          <p>© 2026 Dopal Hosting Inc. Hak Cipta Dilindungi Undang-Undang.</p>
-          <div class="footer-bottom-links">
-            <a href="kebijakan-privasi.html">Kebijakan Privasi</a>
-            <a href="syarat-ketentuan.html">Syarat dan Ketentuan Layanan</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-  </div>
-
-  <script src="Js/script.js"></script>
-
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/6285607598817" target="_blank" class="floating-wa" title="Hubungi kami via WhatsApp">
-    <img src="wasap.png" alt="WhatsApp">
-  </a>
-</body>
-
-</html>
+  const res = await fetch("/api/order", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(data)
+  });
+
+  const result = await res.json();
+
+  if(result.success){
+    alert("Order berhasil!");
+    window.location.href = "/"; // atau invoice
+  } else {
+    alert("Gagal: " + result.error);
+  }
+});
