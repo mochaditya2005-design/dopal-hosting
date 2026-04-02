@@ -242,3 +242,46 @@ function updateThemeIcons(theme) {
     }
 }
 
+// ============================
+// SUBMIT FORM ORDER (WAJIB)
+// ============================
+const orderForm = document.getElementById("orderForm");
+
+if (orderForm) {
+  orderForm.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    const data = {
+      nama: formData.get("nama"),
+      email: formData.get("email"),
+      layanan: formData.get("layanan"),
+      paket: formData.get("paket"),
+      catatan: formData.get("catatan")
+    };
+
+    try {
+      const res = await fetch("/api/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        alert("Pesanan berhasil dikirim!");
+        window.location.href = "/";
+      } else {
+        alert("Gagal: " + result.error);
+      }
+
+    } catch (err) {
+      alert("Terjadi error!");
+      console.error(err);
+    }
+  });
+}
